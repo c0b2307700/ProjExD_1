@@ -10,14 +10,18 @@ def main():
     screen = pg.display.set_mode((800, 600)) # 800x600のサイズをタプルで渡す
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") # load()で画像読み込む
+    bg_img1 = pg.transform.flip(bg_img, True, False) # 練習7反転背景
     kk_img = pg.image.load("fig/3.png") # 練習2
     kk_img = pg.transform.flip(kk_img, True, False) # 練習2 反転 (画像, 左右, 上下)
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        x = -(tmr%800)
-        screen.blit(bg_img, [x, 0])
+        x = -(tmr%3200)
+        screen.blit(bg_img, [x, 0]) # 練習6 間延びと画像動かす
+        screen.blit(bg_img1, [x+1600, 0]) # 練習7 2つ目の背景
+        screen.blit(bg_img, [x+3200, 0])
+        screen.blit(bg_img1, [x+4800, 0])
         screen.blit(kk_img, [300, 200]) # 練習3 貼る順番は注意する
         pg.display.update()
         tmr += 1
