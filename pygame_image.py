@@ -16,20 +16,23 @@ def main():
     kk_rct = kk_img.get_rect() # 練習8-1 sarfaceからrectを抽出する
     kk_rct.center = 300, 200 # 練習8-1 rectを用いた初期座標の設定
     tmr = 0
+
     while True:
         for event in pg.event.get(): # 2回目で説明？
             if event.type == pg.QUIT: return
-        key_lst = pg.key.get_pressed() # 練習8-3 キーの押下状態を判定
+
+        key_lst = pg.key.get_pressed() # 練習8-3 キーの押下状態を判定      
         if key_lst[pg.K_UP]: # ↑キーが押されていたら
             kk_rct.move_ip((0, -1)) # こうかとんのY座標を-1する
-        if key_lst[pg.K_DOWN]: # 練習8-4 あたり
-            kk_rct.move_ip((0, +1)) # move_ip(x, y)で移動させることができる
+        if key_lst[pg.K_DOWN]: # 練習8-4 あたり # move_ip(x, y)で移動させることができる
+            kk_rct.move_ip((0, 1))
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((+1, 0))
+            kk_rct.move_ip((2, 0))
         if key_lst[pg.K_LEFT]:
+            kk_rct.move_ip((-2, 0))
+        else:
             kk_rct.move_ip((-1, 0))
-        
-        
+
         x = -(tmr%3200)
         screen.blit(bg_img, [x, 0]) # 練習6 間延びと画像動かす
         screen.blit(bg_img1, [x+1600, 0]) # 練習7 2つ目の背景
