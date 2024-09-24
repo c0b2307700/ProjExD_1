@@ -10,6 +10,8 @@ def main():
     screen = pg.display.set_mode((800, 600)) # 800x600のサイズをタプルで渡す
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") # load()で画像読み込む
+    kk_img = pg.image.load("fig/3.png") # 練習2
+    kk_img = pg.transform.flip(kk_img, True, False) # 練習2
     tmr = 0
     while True:
         for event in pg.event.get():
