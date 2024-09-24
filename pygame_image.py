@@ -20,19 +20,20 @@ def main():
     while True:
         for event in pg.event.get(): # 2回目で説明？
             if event.type == pg.QUIT: return
-
+        dif_x = 0
+        dif_y = 0
         key_lst = pg.key.get_pressed() # 練習8-3 キーの押下状態を判定      
         if key_lst[pg.K_UP]: # ↑キーが押されていたら
-            kk_rct.move_ip((0, -1)) # こうかとんのY座標を-1する
+            dif_y -= 1 # こうかとんのY座標を-1する
         if key_lst[pg.K_DOWN]: # 練習8-4 あたり # move_ip(x, y)で移動させることができる
-            kk_rct.move_ip((0, 1))
+            dif_y += 1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2, 0))
+            dif_x += 2
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-2, 0))
+            dif_x -= 2
         else:
-            kk_rct.move_ip((-1, 0))
-
+            dif_x -= 1
+        kk_rct.move_ip((dif_x, dif_y))
         x = -(tmr%3200)
         screen.blit(bg_img, [x, 0]) # 練習6 間延びと画像動かす
         screen.blit(bg_img1, [x+1600, 0]) # 練習7 2つ目の背景
